@@ -28,16 +28,7 @@ export default class Education extends Component {
             this.props.handleChange(e.target.value, "end", this.props.id)
           }
         ></input>
-        <input
-          placeholder="Description"
-          onChange={(e) =>
-            this.props.handleChange(
-              e.target.value,
-              "description",
-              this.props.id
-            )
-          }
-        ></input>
+
         <button
           type="button"
           onClick={() => this.props.handleDelete(this.props.id)}

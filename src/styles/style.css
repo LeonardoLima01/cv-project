@@ -39,6 +39,10 @@ body {
   align-self: flex-start;
 }
 
+#personal-title {
+  margin-top: 0;
+}
+
 #cv-editor > div {
   flex: 1;
 }
@@ -46,13 +50,13 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 1vh;
 }
 
 input {
   padding: 5px;
-  border: 1.25px solid black;
-  border-radius: 5px;
+  border: 1.5px solid black;
+  border-radius: 2px;
 }
 
 .Buttons {
@@ -89,6 +93,12 @@ input {
 }
 
 #header-side-info > h4 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#header-side-info > h4 {
   margin: 0;
   margin-bottom: 0.75vh;
   font-weight: 400;
@@ -102,9 +112,26 @@ input {
   margin-bottom: 0.5vh;
 }
 
+#work-exp {
+  margin-top: 0;
+}
+
 .work-exp-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 1.5vh;
+}
+
+.work-exp-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  align-items: center;
+}
+
+.work-exp-top > p {
+  margin: 0;
 }
 
 .work-exp-container h4,
@@ -125,4 +152,14 @@ span {
   margin-top: 1.5vh;
   font-weight: 400;
   font-size: 12px;
+}
+
+.work-description {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.work-position {
+  font-weight: bold;
 }

@@ -3,7 +3,9 @@ import "./styles/style.css";
 import Work from "./components/Work";
 import Personal from "./components/Personal";
 import Education from "./components/Education";
-
+import { FaPhoneSquareAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { IoLocationSharp } from "react-icons/io5";
 class App extends React.Component {
   constructor() {
     super();
@@ -51,7 +53,6 @@ class App extends React.Component {
           university: "",
           start: "",
           end: "",
-          description: "",
         },
       ],
       educationCount: prevState.educationCount + 1,
@@ -114,7 +115,7 @@ class App extends React.Component {
       <>
         <div id="cv-editor">
           <>
-            <h1>Personal</h1>
+            <h1 id="Personal-title">Personal</h1>
             <Personal handleChange={this.handlePersonalChange} />
             <h1>Work</h1>
             {this.state.workArr.map((work) => (
@@ -145,43 +146,46 @@ class App extends React.Component {
               <h3>{this.state.personal.title}</h3>
             </div>
             <div id="header-side-info">
-              <h4>{this.state.personal.phone}</h4>
-              <h4>{this.state.personal.email}</h4>
-              <h4>{this.state.personal.location}</h4>
+              <h4>
+                {" "}
+                <FaPhoneSquareAlt />
+                {this.state.personal.phone}
+              </h4>
+              <h4>
+                <MdEmail />
+                {this.state.personal.email}
+              </h4>
+              <h4>
+                <IoLocationSharp />
+                {this.state.personal.location}
+              </h4>
             </div>
           </div>
           <p>{this.state.personal.description}</p>
           <h3 id="work-exp">Work Experience</h3>
           {this.state.workArr.map((work) => (
             <div className="work-exp-container">
-              <div className="work-exp-left">
-                <h4>{work.position}</h4>
-                <h5>{work.description}</h5>
+              <div className="work-exp-top">
+                <p className="work-position">{work.position}</p>
+                <p>
+                  <span className="company-name">{work.company}</span> |{" "}
+                  {work.start}-{work.end}
+                </p>
               </div>
-              <div className="work-exp-right">
-                <h4>
-                  <span className="company-name">{work.company}</span>{" "}
-                  <span>|</span> {work.start}
-                  <span>-</span>
-                  {work.end}
-                </h4>
-              </div>
+              <p className="work-description">{work.description}</p>
             </div>
           ))}
           <h3 id="education-exp">Education</h3>
           {this.state.educationArr.map((education) => (
             <div className="work-exp-container">
-              <div className="work-exp-left">
-                <h4>{education.course}</h4>
-                <h5>{education.description}</h5>
-              </div>
-              <div className="work-exp-right">
-                <h4>
+              <div className="work-exp-top">
+                <p>{education.course}</p>
+                <p>
                   <span className="company-name">{education.university}</span>{" "}
                   <span>|</span> {education.start}
                   <span>-</span>
                   {education.end}
-                </h4>
+                </p>
               </div>
             </div>
           ))}
