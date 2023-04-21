@@ -23,7 +23,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 30%;
-  border: 3px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
 }
 
 #cv-editor {
@@ -35,8 +36,8 @@ body {
 }
 
 #personal-form,
-#work-form,
-#education-form {
+.work-form,
+.education-form {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -45,4 +46,10 @@ body {
 input {
   padding: 5px;
   border-radius: 5px;
+}
+
+.Buttons {
+  margin-top: 2vh;
+  display: flex;
+  gap: 0.5vw;
 }

@@ -1,48 +1,46 @@
 import React from "react";
-import Personal from "./components/Personal";
-import Work from "./components/Work";
-import Education from "./components/Education";
 import "./styles/style.css";
+import Work from "./components/Work";
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      personalName: "",
-      personalTitle: "",
-      personalPhone: "",
-      personalEmail: "",
-      personalLocation: "",
-      personalDescription: "",
+      workArr: [],
     };
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (prop, value) => {
-    this.setState({ [prop]: value });
+  AddWork = () => {
+    this.setState(() => ({
+      workArr: [
+        ...this.state.workArr,
+        { id: this.state.workArr.length, name: "", age: "" },
+      ],
+    }));
+  };
+
+  handleWorkChange = (value, name, id) => {
+    const newArray = [...this.state.workArr];
+
+    // Exits on first run (prevents 'undefined' bug on page load))
+    if (!newArray[id]) return;
+    console.log(newArray[id]);
+
+    newArray[id][name] = value;
+    this.setState({ workArr: newArray });
   };
 
   render() {
     return (
       <>
         <div id="cv-editor">
-          <div id="personal-container">
-            <h1>Personal</h1>
-            <Personal handleChange={this.handleChange} />
-          </div>
-          <div id="work-container">
-            <h1>Work</h1>
-            <Work />
-          </div>
-          <div id="education-container">
-            <h1>Education</h1>
-            <Education />
-          </div>
-        </div>
-        <div id="cv-preview">
-          <h1>Preview Here!</h1>
+          <>
+            {this.state.workArr.map((_, i) => (
+              <Work id={i} handleChange={this.handleWorkChange} />
+            ))}
+          </>
+          <button onClick={this.AddWork}>Add</button>
         </div>
       </>
     );
