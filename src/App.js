@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/style.css";
 import Work from "./components/Work";
 import Personal from "./components/Personal";
+import Education from "./components/Education";
 
 class App extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends React.Component {
       workArr: [],
       educationArr: [],
       workCount: 0,
+      educationCount: 0,
     };
   }
 
@@ -26,9 +28,33 @@ class App extends React.Component {
     this.setState((prevState) => ({
       workArr: [
         ...this.state.workArr,
-        { id: prevState.workCount, name: "", age: "" },
+        {
+          id: prevState.workCount,
+          company: "",
+          position: "",
+          start: "",
+          end: "",
+          description: "",
+        },
       ],
-      cworkCountount: prevState.workCount + 1,
+      workCount: prevState.workCount + 1,
+    }));
+  };
+
+  AddEducation = () => {
+    this.setState((prevState) => ({
+      educationArr: [
+        ...this.state.educationArr,
+        {
+          id: prevState.educationCount,
+          course: "",
+          university: "",
+          start: "",
+          end: "",
+          description: "",
+        },
+      ],
+      educationCount: prevState.educationCount + 1,
     }));
   };
 
@@ -45,12 +71,11 @@ class App extends React.Component {
     this.setState({ workArr: newArray });
   };
 
-  handleDelete = (id) => {
+  handleWorkDelete = (id) => {
     const newArray = [...this.state.workArr];
 
     // Get index
     let index = newArray.findIndex((element) => element.id === id);
-    console.log("index deleted: " + index);
 
     newArray.splice(index, 1);
     this.setState({ workArr: newArray });
@@ -60,6 +85,28 @@ class App extends React.Component {
     const newArray = this.state.personal;
     newArray[name] = value;
     this.setState({ personal: newArray });
+  };
+
+  handleEducationDelete = (id) => {
+    const newArray = [...this.state.educationArr];
+
+    // Get index
+    let index = newArray.findIndex((element) => element.id === id);
+
+    newArray.splice(index, 1);
+    this.setState({ educationArr: newArray });
+  };
+
+  handleEducationChange = (value, name, id) => {
+    const newArray = [...this.state.educationArr];
+
+    let index = newArray.findIndex((element) => element.id === id);
+
+    // Exits on first run (prevents 'undefined' bug on page load))
+    if (!newArray[index]) return console.log("exit");
+
+    newArray[index][name] = value;
+    this.setState({ educationArr: newArray });
   };
 
   render() {
@@ -75,19 +122,20 @@ class App extends React.Component {
                 key={work.id}
                 id={work.id}
                 handleChange={this.handleWorkChange}
-                handleDelete={this.handleDelete}
+                handleDelete={this.handleWorkDelete}
               />
             ))}
             <button onClick={this.AddWork}>Add</button>
             <h1>Education</h1>
-            {this.state.workArr.map((work) => (
-              <Work
+            {this.state.educationArr.map((work) => (
+              <Education
                 key={work.id}
                 id={work.id}
-                handleChange={this.handleWorkChange}
-                handleDelete={this.handleDelete}
+                handleChange={this.handleEducationChange}
+                handleDelete={this.handleEducationDelete}
               />
             ))}
+            <button onClick={this.AddEducation}>Add</button>
           </>
         </div>
       </>

@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 
-export default class Work extends Component {
+export default class Education extends Component {
   render() {
     return (
       <form>
         <input
-          placeholder="Company"
+          placeholder="Course"
           onChange={(e) =>
-            this.props.handleChange(e.target.value, "company", this.props.id)
+            this.props.handleChange(e.target.value, "course", this.props.id)
           }
         ></input>
         <input
-          placeholder="Position"
+          placeholder="University"
           onChange={(e) =>
-            this.props.handleChange(e.target.value, "position", this.props.id)
+            this.props.handleChange(e.target.value, "university", this.props.id)
           }
         ></input>
         <input
