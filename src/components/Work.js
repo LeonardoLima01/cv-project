@@ -33,7 +33,7 @@ export default class Work extends Component {
           onChange={(e) =>
             this.props.handleChange(
               e.target.value,
-              "Description",
+              "description",
               this.props.id
             )
           }

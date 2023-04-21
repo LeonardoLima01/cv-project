@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 html,
@@ -27,8 +30,13 @@ body {
   border-radius: 5px;
 }
 
-#cv-editor {
+#cv-editor,
+#cv-preview {
   padding: 2%;
+}
+
+#cv-preview {
+  align-self: flex-start;
 }
 
 #cv-editor > div {
@@ -51,4 +59,70 @@ input {
   margin-top: 2vh;
   display: flex;
   gap: 0.5vw;
+}
+
+#preview-name {
+  margin-bottom: 0;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  height: 12.5%;
+  align-items: center;
+  border-bottom: 3px solid orange;
+}
+
+#header > div > h3 {
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+#header > div > h1 {
+  margin: 0;
+  color: orange;
+}
+
+#header-side-info {
+  display: flex;
+  flex-direction: column;
+}
+
+#header-side-info > h4 {
+  margin: 0;
+  margin-bottom: 0.75vh;
+  font-weight: 400;
+  text-align: right;
+}
+
+#work-exp,
+#education-exp {
+  font-weight: 400;
+  color: rgb(216, 144, 9);
+  margin-bottom: 0.5vh;
+}
+
+.work-exp-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-exp-container h4,
+h5 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.work-exp-container h4 {
+  font-weight: bold;
+}
+
+span {
+  font-weight: 400;
+}
+
+#cv-preview > p {
+  margin-top: 1.5vh;
+  font-weight: 400;
+  font-size: 12px;
 }

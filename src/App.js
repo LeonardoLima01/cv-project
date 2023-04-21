@@ -10,12 +10,12 @@ class App extends React.Component {
 
     this.state = {
       personal: {
-        name: "",
-        title: "",
-        phone: "",
-        email: "",
-        location: "",
-        description: "",
+        name: "Name",
+        title: "Title",
+        phone: "Phone",
+        email: "Email",
+        location: "Location",
+        description: "Description",
       },
       workArr: [],
       educationArr: [],
@@ -137,6 +137,54 @@ class App extends React.Component {
             ))}
             <button onClick={this.AddEducation}>Add</button>
           </>
+        </div>
+        <div id="cv-preview">
+          <div id="header">
+            <div>
+              <h1 id="preview-name">{this.state.personal.name}</h1>
+              <h3>{this.state.personal.title}</h3>
+            </div>
+            <div id="header-side-info">
+              <h4>{this.state.personal.phone}</h4>
+              <h4>{this.state.personal.email}</h4>
+              <h4>{this.state.personal.location}</h4>
+            </div>
+          </div>
+          <p>{this.state.personal.description}</p>
+          <h3 id="work-exp">Work Experience</h3>
+          {this.state.workArr.map((work) => (
+            <div className="work-exp-container">
+              <div className="work-exp-left">
+                <h4>{work.position}</h4>
+                <h5>{work.description}</h5>
+              </div>
+              <div className="work-exp-right">
+                <h4>
+                  <span className="company-name">{work.company}</span>{" "}
+                  <span>|</span> {work.start}
+                  <span>-</span>
+                  {work.end}
+                </h4>
+              </div>
+            </div>
+          ))}
+          <h3 id="education-exp">Education</h3>
+          {this.state.educationArr.map((education) => (
+            <div className="work-exp-container">
+              <div className="work-exp-left">
+                <h4>{education.course}</h4>
+                <h5>{education.description}</h5>
+              </div>
+              <div className="work-exp-right">
+                <h4>
+                  <span className="company-name">{education.university}</span>{" "}
+                  <span>|</span> {education.start}
+                  <span>-</span>
+                  {education.end}
+                </h4>
+              </div>
+            </div>
+          ))}
         </div>
       </>
     );
