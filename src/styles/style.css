@@ -35,9 +35,7 @@ body {
   flex: 1;
 }
 
-#personal-form,
-.work-form,
-.education-form {
+form {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -45,6 +43,7 @@ body {
 
 input {
   padding: 5px;
+  border: 1.25px solid black;
   border-radius: 5px;
 }
 
