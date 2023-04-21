@@ -8,26 +8,41 @@ class App extends React.Component {
 
     this.state = {
       workArr: [],
+      count: 0,
     };
   }
 
   AddWork = () => {
-    this.setState(() => ({
+    this.setState((prevState) => ({
       workArr: [
         ...this.state.workArr,
-        { id: this.state.workArr.length, name: "", age: "" },
+        { id: prevState.count, name: "", age: "" },
       ],
+      count: prevState.count + 1,
     }));
   };
 
   handleWorkChange = (value, name, id) => {
     const newArray = [...this.state.workArr];
 
-    // Exits on first run (prevents 'undefined' bug on page load))
-    if (!newArray[id]) return;
-    console.log(newArray[id]);
+    let index = newArray.findIndex((element) => element.id == id);
+    console.log("index modified: " + index);
 
-    newArray[id][name] = value;
+    // Exits on first run (prevents 'undefined' bug on page load))
+    if (!newArray[index]) return console.log("exit");
+
+    newArray[index][name] = value;
+    this.setState({ workArr: newArray });
+  };
+
+  handleDelete = (id) => {
+    const newArray = [...this.state.workArr];
+
+    // Get index
+    let index = newArray.findIndex((element) => element.id == id);
+    console.log("index deleted: " + index);
+
+    newArray.splice(index, 1);
     this.setState({ workArr: newArray });
   };
 
@@ -36,9 +51,19 @@ class App extends React.Component {
       <>
         <div id="cv-editor">
           <>
-            {this.state.workArr.map((_, i) => (
-              <Work id={i} handleChange={this.handleWorkChange} />
-            ))}
+            {this.state.workArr.map(
+              (work, i) => (
+                console.log("sas"),
+                (
+                  <Work
+                    key={work.id}
+                    id={work.id}
+                    handleChange={this.handleWorkChange}
+                    handleDelete={this.handleDelete}
+                  />
+                )
+              )
+            )}
           </>
           <button onClick={this.AddWork}>Add</button>
         </div>
