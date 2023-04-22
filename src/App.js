@@ -63,10 +63,9 @@ class App extends React.Component {
     const newArray = [...this.state.workArr];
 
     let index = newArray.findIndex((element) => element.id === id);
-    console.log("index modified: " + index);
 
     // Exits on first run (prevents 'undefined' bug on page load))
-    if (!newArray[index]) return console.log("exit");
+    if (!newArray[index]) return;
 
     newArray[index][name] = value;
     this.setState({ workArr: newArray });
@@ -104,7 +103,7 @@ class App extends React.Component {
     let index = newArray.findIndex((element) => element.id === id);
 
     // Exits on first run (prevents 'undefined' bug on page load))
-    if (!newArray[index]) return console.log("exit");
+    if (!newArray[index]) return;
 
     newArray[index][name] = value;
     this.setState({ educationArr: newArray });
