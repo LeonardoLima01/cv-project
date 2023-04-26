@@ -1,51 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Work extends Component {
-  render() {
-    return (
-      <form>
-        <input
-          placeholder="Company"
-          onChange={(e) =>
-            this.props.handleChange(e.target.value, "company", this.props.id)
-          }
-        ></input>
-        <input
-          placeholder="Position"
-          onChange={(e) =>
-            this.props.handleChange(e.target.value, "position", this.props.id)
-          }
-        ></input>
-        <input
-          placeholder="Start Date"
-          onChange={(e) =>
-            this.props.handleChange(e.target.value, "start", this.props.id)
-          }
-        ></input>
-        <input
-          placeholder="End Date"
-          onChange={(e) =>
-            this.props.handleChange(e.target.value, "end", this.props.id)
-          }
-        ></input>
-        <input
-          placeholder="Description"
-          onChange={(e) =>
-            this.props.handleChange(
-              e.target.value,
-              "description",
-              this.props.id
-            )
-          }
-        ></input>
-        <button
-          type="button"
-          onClick={() => this.props.handleDelete(this.props.id)}
-        >
-          Delete
-        </button>
-        <hr></hr>
-      </form>
-    );
-  }
+export default function Work(props) {
+  return (
+    <form>
+      <input
+        placeholder="Company"
+        onChange={(e) =>
+          props.handleChange(e.target.value, "company", props.id)
+        }
+      ></input>
+      <input
+        placeholder="Position"
+        onChange={(e) =>
+          props.handleChange(e.target.value, "position", props.id)
+        }
+      ></input>
+      <input
+        placeholder="Start Date"
+        onChange={(e) => props.handleChange(e.target.value, "start", props.id)}
+      ></input>
+      <input
+        placeholder="End Date"
+        onChange={(e) => props.handleChange(e.target.value, "end", props.id)}
+      ></input>
+      <input
+        placeholder="Description"
+        onChange={(e) =>
+          props.handleChange(e.target.value, "description", props.id)
+        }
+      ></input>
+      <button type="button" onClick={() => props.handleDelete(props.id)}>
+        Delete
+      </button>
+      <hr></hr>
+    </form>
+  );
 }
