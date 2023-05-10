@@ -1,6 +1,6 @@
 # cv-project
 
-[Live demo here](https://socryy.github.io/cv-project/)
+[Live demo here](https://LeonardoLima01.github.io/cv-project/)
 
 Created with React, This app lets you easily create a CV based on a standard format.
 
