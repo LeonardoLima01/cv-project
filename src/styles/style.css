@@ -160,3 +160,25 @@ span {
 .work-position {
   font-weight: bold;
 }
+
+button {
+  width: 80px;
+  border-radius: 5px;
+  padding: 4px 2px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, color 0.25s;
+  font-weight: bold;
+}
+
+button[type="button"]:hover {
+  transform: scale(1.05);
+  background-color: rgb(233, 115, 85);
+  color: #eee;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: rgb(85, 233, 159);
+  color: #eee;
+}
